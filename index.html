@@ -278,6 +278,402 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://rickiewoo.github.io/2020/07/13/Null%20is%20not%20a%20obeject/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Rickie Woo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/logo.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rickie Woo's Wonder Land">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/07/13/Null%20is%20not%20a%20obeject/" itemprop="url">Null is not a obeject</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-07-13T16:54:06+08:00">
+                2020-07-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Null-is-not-a-obeject"><a href="#Null-is-not-a-obeject" class="headerlink" title="Null is not a obeject"></a>Null is not a obeject</h3><h4 id="null-is-a-object"><a href="#null-is-a-object" class="headerlink" title="null is a object ?"></a>null is a object ?</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typeof</span> <span class="literal">null</span> === <span class="string">'object'</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="But-why-there-is-‘null-is-not-a-obejct’-error"><a href="#But-why-there-is-‘null-is-not-a-obejct’-error" class="headerlink" title="But why there is ‘null is not a obejct’ error?"></a>But why there is ‘null is not a obejct’ error?</h4><p>实际上，这是一个typeof的历史遗留问题，null本身应该是原始数据类型中的一种，而不属于object。</p>
+<p>在JavaScript的早期版本中，值以32为存储，其中前3位表示数据类型，其余表示值。对于一个对象，前三位是000，而在JavaScript中，null又表示没有任何内容/无效，因此将其表示为全0，所以才会出现<code>typeof null === &#39;object&#39;</code>的错误。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://rickiewoo.github.io/2020/07/13/InnerHtml%20InnerText%20And%20TextcCntent/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Rickie Woo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/logo.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rickie Woo's Wonder Land">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/07/13/InnerHtml%20InnerText%20And%20TextcCntent/" itemprop="url">InnerHtml InnerText And TextcCntent</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-07-13T14:35:00+08:00">
+                2020-07-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="InnerHtml-InnerText-And-TextcCntent"><a href="#InnerHtml-InnerText-And-TextcCntent" class="headerlink" title="InnerHtml InnerText And TextcCntent"></a>InnerHtml InnerText And TextcCntent</h3><p>在js中，有三种方式设置/得到DOM中HTML元素的内容</p>
+<h4 id="InnerHtml"><a href="#InnerHtml" class="headerlink" title="InnerHtml"></a>InnerHtml</h4><p>设置/返回一个元素content，以新的HTML形式</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> example = <span class="built_in">document</span>.getElementById(‘example’)</span><br><span class="line">example.innerHTML = “&lt;p&gt;This is &lt;strong&gt;my&lt;<span class="regexp">/strong&gt; paragraph.&lt;/</span>p&gt;”</span><br></pre></td></tr></table></figure>
+
+
+
+<p>HTML5禁止在innerHtml中包含script标签，因为会产生XSS脚本攻击这类安全问题。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/***以下alert将不会显示***/</span></span><br><span class="line"><span class="keyword">const</span> example1 = <span class="string">"&lt;script&gt;alert('I am an annoying alert!')&lt;/script&gt;"</span></span><br><span class="line">el.innerHTML = example1 </span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> example2 = <span class="built_in">document</span>.getElementById(<span class="string">'example2'</span>)</span><br><span class="line">example2.innerHTML = <span class="string">'&lt;script deferred&gt;alert("XSS Attack");&lt;/script&gt;'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/***以下将产生脚本注入的网络问题***/</span></span><br><span class="line"><span class="keyword">const</span> example3 = <span class="string">"&lt;img src='x' onerror="</span>alert(<span class="number">1</span>)<span class="string">"</span></span><br><span class="line"><span class="string">const example4 = '&lt;img src=x onerror="</span>alert(\<span class="string">'XSS Attack\')"&gt;'</span></span><br><span class="line"><span class="keyword">const</span> example5 = <span class="string">'&lt;img src="urlNotExist" onerror="alert(document.cookie)"&gt;'</span></span><br><span class="line"><span class="keyword">const</span> example5 = <span class="string">'&lt;img src=x onerror="alert(\'XSS Attack\')"&gt;'</span></span><br><span class="line">&lt;button onmouseover=alert(<span class="string">'Wufff!'</span>)&gt;click me!&lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">&lt;img src=j&amp;#X41vascript:alert('test2')&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="innerText"><a href="#innerText" class="headerlink" title="innerText"></a>innerText</h4><p>返回内部除了script标签和style标签以外的所有元素的内容，返回的内容是可见的文本，并没有任何的格式化。(注意不会显示HTML代码中多余的空格)</p>
+<p>缺点：innerText会触发浏览器的重排（reflow），因为他是css层面的概念，这将会导致性能下降。</p>
+<p>reflow指的是浏览器重新计算页面元素及重新呈现文档时会出现的。触发reflow的例子包括调整浏览器的窗口大小或者更改DOM中的元素。这种计算是昂贵的，所以应该将其最小化以提高速度、效率及用户体验。</p>
+<h4 id="textContent"><a href="#textContent" class="headerlink" title="textContent"></a>textContent</h4><p>textContent将返回所有原始内容，不包括HTML标签。因此返回的值包括空格、换行符、回车符、script和style元素的内容等。与innerHTML不同的是，它具有更好的性能，因为他的值没有被解析为html，因此不会有XSS攻击的问题；与innerText相比，由于它与css无关，所以不会出发reflow。所有的node对象都有textConetnt，但是只有HTMLElement对象有innerText。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://rickiewoo.github.io/2020/06/30/js-%E5%85%B3%E4%BA%8E%E6%95%B0%E5%AD%97/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Rickie Woo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/logo.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rickie Woo's Wonder Land">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/06/30/js-%E5%85%B3%E4%BA%8E%E6%95%B0%E5%AD%97/" itemprop="url">js-关于数字</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-30T13:55:01+08:00">
+                2020-06-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="js-关于数字"><a href="#js-关于数字" class="headerlink" title="js-关于数字"></a>js-关于数字</h1><h4 id="浮点数转整数"><a href="#浮点数转整数" class="headerlink" title="浮点数转整数"></a>浮点数转整数</h4><ul>
+<li>Math.floor()： 向下取整</li>
+<li>Math.ceil(): 向上取整</li>
+<li>Math.trunc(): 去掉小数点</li>
+<li>Math.round(): 四舍五入</li>
+</ul>
+<p>####Infinity:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="literal">Infinity</span> === <span class="built_in">Math</span>.pow(<span class="number">10</span>, <span class="number">1000</span>)</span><br><span class="line"></span><br><span class="line">-<span class="literal">Infinity</span> === <span class="built_in">Math</span>.log(<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">-<span class="built_in">Math</span>.log(<span class="number">0</span>) === <span class="built_in">Math</span>.pow(<span class="number">10</span>, <span class="number">1000</span>)</span><br><span class="line"></span><br><span class="line"><span class="number">1</span> / <span class="literal">Infinity</span> = <span class="number">0</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>####Array.flat()</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> arr = [<span class="number">1</span>, <span class="number">2</span>, [<span class="number">3</span>]];</span><br><span class="line">arr.flat(); <span class="comment">// [1, 2, 3]</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> arr2 = [<span class="number">1</span>, <span class="number">2</span>, [<span class="number">3</span>, [<span class="number">4</span>, [<span class="number">5</span>]]]];</span><br><span class="line">arr.flat(<span class="number">2</span>); <span class="comment">// [1, 2, 3, 4, [5]]</span></span><br><span class="line"><span class="comment">// 平铺数组</span></span><br><span class="line">arr.flat(<span class="literal">Infinity</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="Date：Add-days"><a href="#Date：Add-days" class="headerlink" title="Date：Add days"></a>Date：Add days</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> result = <span class="keyword">new</span> <span class="built_in">Date</span>(date)</span><br><span class="line">result.setDate(result.getDate() + days)</span><br></pre></td></tr></table></figure>
+
+
+
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://rickiewoo.github.io/2018/08/26/setTImeout%E4%B8%8E%E5%BE%AA%E7%8E%AF%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1379,464 +1775,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://rickiewoo.github.io/2018/05/23/typeof-instanceof/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Rickie Woo">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/logo.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Rickie Woo's Wonder Land">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/05/23/typeof-instanceof/" itemprop="url">typeof instanceof</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-23T18:19:21+08:00">
-                2018-05-23
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/keep-learning/" itemprop="url" rel="index">
-                    <span itemprop="name">keep-learning</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="1-typeof是一个操作符-amp-amp-返回的是字符串哦！"><a href="#1-typeof是一个操作符-amp-amp-返回的是字符串哦！" class="headerlink" title="1. typeof是一个操作符&amp;&amp;返回的是字符串哦！"></a>1. typeof是一个操作符&amp;&amp;返回的是字符串哦！</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//首先看代码a</span></span><br><span class="line"><span class="keyword">var</span> ary = [<span class="number">1</span>,<span class="number">23</span>,<span class="number">4</span>];</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> ary); <span class="comment">//输出结果是Object</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li><strong>typeof是检测基本数据类型的利器</strong></li>
-</ul>
-<p>（五种基本数据类型：String、Number、Boolean、Null、Undefined）</p>
-<ul>
-<li>当判断为初始化和为声明的变量时 typeof操作符返回的都是‘undefined’；</li>
-</ul>
-<p>上面的办法并不能实时的检测出是否是数组，只能判断其类型，所以说typeof判断基本类型数据还是挺好的，但是不能准确测试出是否是数组（typeof的具体用法以后提及，现在回归正题）</p>
-<h3 id="2-instanceof操作符返回的是boolean值，检测的是引用类型"><a href="#2-instanceof操作符返回的是boolean值，检测的是引用类型" class="headerlink" title="2. instanceof操作符返回的是boolean值，检测的是引用类型"></a>2. instanceof操作符返回的是boolean值，检测的是引用类型</h3><ul>
-<li>非引用类型则统统“返回false</li>
-</ul>
-<p><strong>2.instanceof 判断</strong></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> ary = [<span class="number">1</span>,<span class="number">23</span>,<span class="number">4</span>];</span><br><span class="line"><span class="built_in">console</span>.log(ary <span class="keyword">instanceof</span> <span class="built_in">Array</span>)<span class="comment">//true;</span></span><br></pre></td></tr></table></figure>
-<p>从输出的效果来看，还是挺令人满意的，能准确的检测出数据类型是否是数组，不要高兴的太早，大家先想想这个的缺点，我们接着说第三种方法</p>
-<p><strong>3.原型链方法</strong></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> ary = [<span class="number">1</span>,<span class="number">23</span>,<span class="number">4</span>];</span><br><span class="line"><span class="built_in">console</span>.log(ary.__proto__.constructor==<span class="built_in">Array</span>);<span class="comment">//true</span></span><br><span class="line"><span class="built_in">console</span>.log(ary.constructor==<span class="built_in">Array</span>)<span class="comment">//true 这两段代码是一样的</span></span><br></pre></td></tr></table></figure>
-<p>这个办法开起来好高大上哦~~，利用了原型链的方法，但是但是，这个是有兼容的哦，在IE早期版本里面<strong>proto</strong>是没有定义的哦~而且，这个仍然有局限性，我们现在就来总结一下第2种方法和第3种方法局限性</p>
-<p>总结一下第2种方法和第3种方法局限性</p>
-<p>instanceof 和constructor 判断的变量，必须在当前页面声明的，比如，一个页面（父页面）有一个框架，框架中引用了一个页面（子页面），在子页面中声明了一个ary，并将其赋值给父页面的一个变量，这时判断该变量，Array == object.constructor;会返回false；</p>
-<p><strong>原因：</strong></p>
-<p>1、array属于引用型数据，在传递过程中，仅仅是引用地址的传递。</p>
-<p>2、每个页面的Array原生对象所引用的地址是不一样的，在子页面声明的array，所对应的构造函数，是子页面的Array对象；父页面来进行判断，使用的Array并不等于子页面的Array；切记，不然很难跟踪问题！</p>
-<p><strong>4.通用的方法</strong></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> ary = [<span class="number">1</span>,<span class="number">23</span>,<span class="number">4</span>];</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isArray</span>(<span class="params">o</span>)</span>&#123;</span><br><span class="line"><span class="keyword">return</span> <span class="built_in">Object</span>.prototype.toString.call(o)==<span class="string">'[object Array]'</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(isArray(ary));</span><br></pre></td></tr></table></figure>
-<p>具体Object.prototype.toString 的用法，请参照 <a href="http://www.jb51.net/article/79941.htm" target="_blank" rel="noopener">Object.prototype.toString的用法</a></p>
-<p>—————————————————————————————</p>
-<h3 id="关于实现原理"><a href="#关于实现原理" class="headerlink" title="关于实现原理"></a>关于实现原理</h3><p><a href="https://juejin.im/post/5b0b9b9051882515773ae714?utm_source=wechat" target="_blank" rel="noopener">https://juejin.im/post/5b0b9b9051882515773ae714?utm_source=wechat</a></p>
-<p>浅谈 instanceof 和 typeof 的实现原理</p>
-<p>js 在底层存储变量的时候，会在变量的机器码的低位1-3位存储其类型信息👉</p>
-<ul>
-<li>000：对象</li>
-<li>010：浮点数</li>
-<li>100：字符串</li>
-<li>110：布尔</li>
-<li>1：整数</li>
-<li>null：所有机器码均为0</li>
-<li>undefined：用 −2^30 整数来表示</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="literal">null</span> <span class="keyword">instanceof</span> <span class="literal">null</span> <span class="comment">// TypeError: Right-hand side of 'instanceof' is not an object</span></span><br></pre></td></tr></table></figure>
-<h1 id="instanceof-原理还得再看！"><a href="#instanceof-原理还得再看！" class="headerlink" title="instanceof 原理还得再看！"></a>instanceof 原理还得再看！</h1>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://rickiewoo.github.io/2018/05/23/try-catch/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Rickie Woo">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/logo.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Rickie Woo's Wonder Land">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/05/23/try-catch/" itemprop="url">try-catch</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-23T18:18:12+08:00">
-                2018-05-23
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/keep-learning/" itemprop="url" rel="index">
-                    <span itemprop="name">keep-learning</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<ul>
-<li>使用 try catch 的使用无论是在 try 中的代码还是在 catch 中的代码性能消耗都是一样的。</li>
-<li>需要注意的性能消耗在于 try catch 中不要直接塞进去太多的代码（声明太多的变量），最好是吧所有要执行的代码放在另一个 function 中，通过调用这个 function 来执行。</li>
-</ul>
-<p>针对第二点，可以查看  ECMA 中关于 try catch 的解释，在代码进入 try catch 的时候 js引擎会拷贝当前的词法环境，拷贝的其实就是当前 scope 下的所有的变量。</p>
-<p>在使用 try catch 的时候尽量把 try catch 放在一个相对干净的 scope 中，同时在 try catch 语句中也尽量保证足够少的变量，最好通过函数调用方式来 try catch。</p>
-</blockquote>
-<p> <a href="http://taobaofed.org/blog/2015/10/28/try-catch-runing-problem/" target="_blank" rel="noopener">http://taobaofed.org/blog/2015/10/28/try-catch-runing-problem/</a></p>
-<p>最后一个问题</p>
-<p><strong>为什么将代码块外链就可以降低耗时？？？？</strong></p>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://rickiewoo.github.io/2018/05/23/JS%E4%B8%AD%E5%85%B3%E4%BA%8E%E5%BB%B6%E6%97%B6%E7%9A%84%E9%83%A8%E5%88%86/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Rickie Woo">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/logo.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Rickie Woo's Wonder Land">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/05/23/JS%E4%B8%AD%E5%85%B3%E4%BA%8E%E5%BB%B6%E6%97%B6%E7%9A%84%E9%83%A8%E5%88%86/" itemprop="url">JS中关于延时的部分</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-23T18:15:10+08:00">
-                2018-05-23
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>今天要写一个js的延时操作，延迟发送订单 ，用的await</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i  = <span class="number">0</span> ; i &lt; <span class="number">10</span> ; i++) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(i);</span><br><span class="line">    setTimeout(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">        i--;</span><br><span class="line">        <span class="built_in">console</span>.log(i)</span><br><span class="line">    &#125;, i*<span class="number">20</span>*<span class="number">1000</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"sdsds"</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">输出：</span><br><span class="line"><span class="number">0</span></span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">3</span></span><br><span class="line"><span class="number">4</span></span><br><span class="line"><span class="number">5</span></span><br><span class="line"><span class="number">6</span></span><br><span class="line"><span class="number">7</span></span><br><span class="line"><span class="number">8</span></span><br><span class="line"><span class="number">9</span></span><br><span class="line"><span class="number">887</span><span class="comment">//？？？第二次是undefined</span></span><br><span class="line">sdsds</span><br><span class="line"><span class="number">-1</span><span class="comment">//setTimeout(0)可以使其放在执行的队列尾。</span></span><br><span class="line"><span class="comment">//延时输出开始，可看出延时循环也是起作用的，这个还待研究啊</span></span><br><span class="line"><span class="number">0</span></span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">3</span></span><br><span class="line"><span class="number">4</span></span><br><span class="line"><span class="number">5</span></span><br><span class="line"><span class="number">6</span></span><br><span class="line"><span class="number">7</span></span><br><span class="line"><span class="number">8</span></span><br><span class="line"><span class="number">9</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">0</span>; j&lt; <span class="number">10</span> ; j++) &#123;</span><br><span class="line">     <span class="built_in">console</span>.log(j);</span><br><span class="line">     <span class="keyword">for</span>(<span class="keyword">let</span> i  = <span class="number">0</span> ; i &lt; <span class="number">10</span> ; i++) &#123;</span><br><span class="line">         <span class="built_in">console</span>.log(i, j);</span><br><span class="line">         setTimeout(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">             i--;</span><br><span class="line">             <span class="built_in">console</span>.log(i);</span><br><span class="line">         &#125;, i*<span class="number">20</span>*<span class="number">1000</span>)</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="built_in">console</span>.log(<span class="string">"sdsds"</span>);</span><br><span class="line"> &#125;</span><br><span class="line"><span class="comment">//output</span></span><br><span class="line">VM9875:<span class="number">2</span> <span class="number">0</span></span><br><span class="line">VM9875:<span class="number">4</span> <span class="number">0</span> <span class="number">0</span></span><br><span class="line">VM9875:<span class="number">4</span> <span class="number">1</span> <span class="number">0</span></span><br><span class="line">VM9875:<span class="number">4</span> <span class="number">2</span> <span class="number">0</span></span><br><span class="line">VM9875:<span class="number">4</span> <span class="number">3</span> <span class="number">0</span></span><br><span class="line">VM9875:<span class="number">4</span> <span class="number">4</span> <span class="number">0</span></span><br><span class="line">VM9875:<span class="number">4</span> <span class="number">5</span> <span class="number">0</span></span><br><span class="line">VM9875:<span class="number">4</span> <span class="number">6</span> <span class="number">0</span></span><br><span class="line">VM9875:<span class="number">4</span> <span class="number">7</span> <span class="number">0</span></span><br><span class="line">VM9875:<span class="number">4</span> <span class="number">8</span> <span class="number">0</span></span><br><span class="line">VM9875:<span class="number">4</span> <span class="number">9</span> <span class="number">0</span></span><br><span class="line">VM9875:<span class="number">10</span> sdsds</span><br><span class="line">VM9875:<span class="number">2</span> <span class="number">1</span></span><br><span class="line">VM9875:<span class="number">4</span> <span class="number">0</span> <span class="number">1</span></span><br><span class="line">VM9875:<span class="number">4</span> <span class="number">1</span> <span class="number">1</span></span><br><span class="line">VM9875:<span class="number">4</span> <span class="number">2</span> <span class="number">1</span></span><br><span class="line">VM9875:<span class="number">4</span> <span class="number">3</span> <span class="number">1</span></span><br><span class="line">VM9875:<span class="number">4</span> <span class="number">4</span> <span class="number">1</span></span><br><span class="line">VM9875:<span class="number">4</span> <span class="number">5</span> <span class="number">1</span></span><br><span class="line">VM9875:<span class="number">4</span> <span class="number">6</span> <span class="number">1</span></span><br><span class="line">VM9875:<span class="number">4</span> <span class="number">7</span> <span class="number">1</span></span><br><span class="line">VM9875:<span class="number">4</span> <span class="number">8</span> <span class="number">1</span></span><br><span class="line">VM9875:<span class="number">4</span> <span class="number">9</span> <span class="number">1</span></span><br><span class="line">VM9875:<span class="number">10</span> sdsds</span><br><span class="line">VM9875:<span class="number">2</span> <span class="number">2</span></span><br><span class="line">VM9875:<span class="number">4</span> <span class="number">0</span> <span class="number">2</span></span><br><span class="line">VM9875:<span class="number">4</span> <span class="number">1</span> <span class="number">2</span></span><br><span class="line">VM9875:<span class="number">4</span> <span class="number">2</span> <span class="number">2</span></span><br><span class="line">VM9875:<span class="number">4</span> <span class="number">3</span> <span class="number">2</span></span><br><span class="line">VM9875:<span class="number">4</span> <span class="number">4</span> <span class="number">2</span></span><br><span class="line">VM9875:<span class="number">4</span> <span class="number">5</span> <span class="number">2</span></span><br><span class="line">VM9875:<span class="number">4</span> <span class="number">6</span> <span class="number">2</span></span><br><span class="line">VM9875:<span class="number">4</span> <span class="number">7</span> <span class="number">2</span></span><br><span class="line">VM9875:<span class="number">4</span> <span class="number">8</span> <span class="number">2</span></span><br><span class="line">VM9875:<span class="number">4</span> <span class="number">9</span> <span class="number">2</span></span><br><span class="line">VM9875:<span class="number">10</span> sdsds</span><br><span class="line">VM9875:<span class="number">2</span> <span class="number">3</span></span><br><span class="line">VM9875:<span class="number">4</span> <span class="number">0</span> <span class="number">3</span></span><br><span class="line">VM9875:<span class="number">4</span> <span class="number">1</span> <span class="number">3</span></span><br><span class="line">VM9875:<span class="number">4</span> <span class="number">2</span> <span class="number">3</span></span><br><span class="line">VM9875:<span class="number">4</span> <span class="number">3</span> <span class="number">3</span></span><br><span class="line">VM9875:<span class="number">4</span> <span class="number">4</span> <span class="number">3</span></span><br><span class="line">VM9875:<span class="number">4</span> <span class="number">5</span> <span class="number">3</span></span><br><span class="line">VM9875:<span class="number">4</span> <span class="number">6</span> <span class="number">3</span></span><br><span class="line">VM9875:<span class="number">4</span> <span class="number">7</span> <span class="number">3</span></span><br><span class="line">VM9875:<span class="number">4</span> <span class="number">8</span> <span class="number">3</span></span><br><span class="line">VM9875:<span class="number">4</span> <span class="number">9</span> <span class="number">3</span></span><br><span class="line">VM9875:<span class="number">10</span> sdsds</span><br><span class="line">VM9875:<span class="number">2</span> <span class="number">4</span></span><br><span class="line">VM9875:<span class="number">4</span> <span class="number">0</span> <span class="number">4</span></span><br><span class="line">VM9875:<span class="number">4</span> <span class="number">1</span> <span class="number">4</span></span><br><span class="line">VM9875:<span class="number">4</span> <span class="number">2</span> <span class="number">4</span></span><br><span class="line">VM9875:<span class="number">4</span> <span class="number">3</span> <span class="number">4</span></span><br><span class="line">VM9875:<span class="number">4</span> <span class="number">4</span> <span class="number">4</span></span><br><span class="line">VM9875:<span class="number">4</span> <span class="number">5</span> <span class="number">4</span></span><br><span class="line">VM9875:<span class="number">4</span> <span class="number">6</span> <span class="number">4</span></span><br><span class="line">VM9875:<span class="number">4</span> <span class="number">7</span> <span class="number">4</span></span><br><span class="line">VM9875:<span class="number">4</span> <span class="number">8</span> <span class="number">4</span></span><br><span class="line">VM9875:<span class="number">4</span> <span class="number">9</span> <span class="number">4</span></span><br><span class="line">VM9875:<span class="number">10</span> sdsds</span><br><span class="line">VM9875:<span class="number">2</span> <span class="number">5</span></span><br><span class="line">VM9875:<span class="number">4</span> <span class="number">0</span> <span class="number">5</span></span><br><span class="line">VM9875:<span class="number">4</span> <span class="number">1</span> <span class="number">5</span></span><br><span class="line">VM9875:<span class="number">4</span> <span class="number">2</span> <span class="number">5</span></span><br><span class="line">VM9875:<span class="number">4</span> <span class="number">3</span> <span class="number">5</span></span><br><span class="line">VM9875:<span class="number">4</span> <span class="number">4</span> <span class="number">5</span></span><br><span class="line">VM9875:<span class="number">4</span> <span class="number">5</span> <span class="number">5</span></span><br><span class="line">VM9875:<span class="number">4</span> <span class="number">6</span> <span class="number">5</span></span><br><span class="line">VM9875:<span class="number">4</span> <span class="number">7</span> <span class="number">5</span></span><br><span class="line">VM9875:<span class="number">4</span> <span class="number">8</span> <span class="number">5</span></span><br><span class="line">VM9875:<span class="number">4</span> <span class="number">9</span> <span class="number">5</span></span><br><span class="line">VM9875:<span class="number">10</span> sdsds</span><br><span class="line">VM9875:<span class="number">2</span> <span class="number">6</span></span><br><span class="line">VM9875:<span class="number">4</span> <span class="number">0</span> <span class="number">6</span></span><br><span class="line">VM9875:<span class="number">4</span> <span class="number">1</span> <span class="number">6</span></span><br><span class="line">VM9875:<span class="number">4</span> <span class="number">2</span> <span class="number">6</span></span><br><span class="line">VM9875:<span class="number">4</span> <span class="number">3</span> <span class="number">6</span></span><br><span class="line">VM9875:<span class="number">4</span> <span class="number">4</span> <span class="number">6</span></span><br><span class="line">VM9875:<span class="number">4</span> <span class="number">5</span> <span class="number">6</span></span><br><span class="line">VM9875:<span class="number">4</span> <span class="number">6</span> <span class="number">6</span></span><br><span class="line">VM9875:<span class="number">4</span> <span class="number">7</span> <span class="number">6</span></span><br><span class="line">VM9875:<span class="number">4</span> <span class="number">8</span> <span class="number">6</span></span><br><span class="line">VM9875:<span class="number">4</span> <span class="number">9</span> <span class="number">6</span></span><br><span class="line">VM9875:<span class="number">10</span> sdsds</span><br><span class="line">VM9875:<span class="number">2</span> <span class="number">7</span></span><br><span class="line">VM9875:<span class="number">4</span> <span class="number">0</span> <span class="number">7</span></span><br><span class="line">VM9875:<span class="number">4</span> <span class="number">1</span> <span class="number">7</span></span><br><span class="line">VM9875:<span class="number">4</span> <span class="number">2</span> <span class="number">7</span></span><br><span class="line">VM9875:<span class="number">4</span> <span class="number">3</span> <span class="number">7</span></span><br><span class="line">VM9875:<span class="number">4</span> <span class="number">4</span> <span class="number">7</span></span><br><span class="line">VM9875:<span class="number">4</span> <span class="number">5</span> <span class="number">7</span></span><br><span class="line">VM9875:<span class="number">4</span> <span class="number">6</span> <span class="number">7</span></span><br><span class="line">VM9875:<span class="number">4</span> <span class="number">7</span> <span class="number">7</span></span><br><span class="line">VM9875:<span class="number">4</span> <span class="number">8</span> <span class="number">7</span></span><br><span class="line">VM9875:<span class="number">4</span> <span class="number">9</span> <span class="number">7</span></span><br><span class="line">VM9875:<span class="number">10</span> sdsds</span><br><span class="line">VM9875:<span class="number">2</span> <span class="number">8</span></span><br><span class="line">VM9875:<span class="number">4</span> <span class="number">0</span> <span class="number">8</span></span><br><span class="line">VM9875:<span class="number">4</span> <span class="number">1</span> <span class="number">8</span></span><br><span class="line">VM9875:<span class="number">4</span> <span class="number">2</span> <span class="number">8</span></span><br><span class="line">VM9875:<span class="number">4</span> <span class="number">3</span> <span class="number">8</span></span><br><span class="line">VM9875:<span class="number">4</span> <span class="number">4</span> <span class="number">8</span></span><br><span class="line">VM9875:<span class="number">4</span> <span class="number">5</span> <span class="number">8</span></span><br><span class="line">VM9875:<span class="number">4</span> <span class="number">6</span> <span class="number">8</span></span><br><span class="line">VM9875:<span class="number">4</span> <span class="number">7</span> <span class="number">8</span></span><br><span class="line">VM9875:<span class="number">4</span> <span class="number">8</span> <span class="number">8</span></span><br><span class="line">VM9875:<span class="number">4</span> <span class="number">9</span> <span class="number">8</span></span><br><span class="line">VM9875:<span class="number">10</span> sdsds</span><br><span class="line">VM9875:<span class="number">2</span> <span class="number">9</span></span><br><span class="line">VM9875:<span class="number">4</span> <span class="number">0</span> <span class="number">9</span></span><br><span class="line">VM9875:<span class="number">4</span> <span class="number">1</span> <span class="number">9</span></span><br><span class="line">VM9875:<span class="number">4</span> <span class="number">2</span> <span class="number">9</span></span><br><span class="line">VM9875:<span class="number">4</span> <span class="number">3</span> <span class="number">9</span></span><br><span class="line">VM9875:<span class="number">4</span> <span class="number">4</span> <span class="number">9</span></span><br><span class="line">VM9875:<span class="number">4</span> <span class="number">5</span> <span class="number">9</span></span><br><span class="line">VM9875:<span class="number">4</span> <span class="number">6</span> <span class="number">9</span></span><br><span class="line">VM9875:<span class="number">4</span> <span class="number">7</span> <span class="number">9</span></span><br><span class="line">VM9875:<span class="number">4</span> <span class="number">8</span> <span class="number">9</span></span><br><span class="line">VM9875:<span class="number">4</span> <span class="number">9</span> <span class="number">9</span></span><br><span class="line">VM9875:<span class="number">10</span> sdsds</span><br><span class="line"><span class="literal">undefined</span></span><br><span class="line"><span class="number">10</span> VM9875:<span class="number">7</span> <span class="number">-1</span></span><br><span class="line"><span class="number">10</span> VM9875:<span class="number">7</span> <span class="number">0</span></span><br><span class="line"><span class="number">10</span> VM9875:<span class="number">7</span> <span class="number">1</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ƒunction emm () &#123;</span><br><span class="line"><span class="keyword">let</span> i = <span class="string">'e'</span></span><br><span class="line">setTimeout(<span class="built_in">console</span>.log(i), <span class="number">1000</span>)</span><br><span class="line"><span class="keyword">return</span> i</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> a = emm</span><br><span class="line"><span class="comment">//a = 'e'</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">_sleep</span>(<span class="params">time</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">        setTimeout(resolve, time*<span class="number">60</span>*<span class="number">1000</span>);</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1891,7 +1829,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-count">24</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
