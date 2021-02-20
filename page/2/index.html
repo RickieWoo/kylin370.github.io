@@ -173,6 +173,484 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://rickiewoo.github.io/2018/08/26/es6%E4%B9%8Blet-const/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/sasuke.jpeg">
+      <meta itemprop="name" content="Rickie Woo">
+      <meta itemprop="description" content="We were both young when I first saw you.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rickie Woo's Wonder Land">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/08/26/es6%E4%B9%8Blet-const/" class="post-title-link" itemprop="url">es6之let const</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2018-08-26 17:56:01" itemprop="dateCreated datePublished" datetime="2018-08-26T17:56:01+08:00">2018-08-26</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-06-08 18:34:23" itemprop="dateModified" datetime="2020-06-08T18:34:23+08:00">2020-06-08</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/keep-learning/" itemprop="url" rel="index"><span itemprop="name">keep-learning</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="let"><a href="#let" class="headerlink" title="let"></a>let</h2><ol>
+<li>let 不能重复声明</li>
+<li>只作用在当前代码块</li>
+<li>声明的变量不会覆盖window 上面的变量</li>
+<li>也有变量提升的</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> i = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">if</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(i);</span><br><span class="line">  <span class="keyword">let</span> i = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// Uncaught ReferenceError: i is not defined</span></span><br><span class="line"><span class="comment">// 说明是有变量提升的,详见临时性死区</span></span><br></pre></td></tr></table></figure>
+<h2 id="const"><a href="#const" class="headerlink" title="const"></a>const</h2><ol>
+<li>const 不能重复声明</li>
+<li>声明同时需要赋值</li>
+<li>不能重复赋值</li>
+<li>声明的是对象的话,可以修改对象的内容</li>
+<li>声明的变量不会覆盖window 上面的变量</li>
+</ol>
+<h2 id="var-变量提升"><a href="#var-变量提升" class="headerlink" title="var 变量提升"></a>var 变量提升</h2><p>var 的声明提升机制：<br>在函数作用域或全局作用域中通过关键字var 声明的变量,无论实际在哪里声明,都会被当成在当前作用域(ES5作用域,只有函数能起到块级作用域的目的)顶部声明的变量.<br>var 声明的变量会覆盖window的原有对象。</p>
+<h3 id="块级作用域绑定"><a href="#块级作用域绑定" class="headerlink" title="块级作用域绑定"></a>块级作用域绑定</h3><p>该块由一对大括号界定，可以是labelled： （比如case 1: ）</p>
+<h3 id="临时性死区-Temporal-Dead-Zone"><a href="#临时性死区-Temporal-Dead-Zone" class="headerlink" title="临时性死区(Temporal Dead Zone)"></a>临时性死区(Temporal Dead Zone)</h3><p>JavaScript引擎在扫描代码发现变量声明时，要么将它们提升至作用域顶部（遇到var声明），要么将声明放到TDZ中（遇到let和const声明），访问TDZ中的变量会触发运行时错误，只有执行过变量声明语句后，变量才会从TDZ中移出，才能正常访问。</p>
+<h3 id="全局作用域绑定"><a href="#全局作用域绑定" class="headerlink" title="全局作用域绑定"></a>全局作用域绑定</h3><p>当var被作用于全局作用域时，它会创建一个新的全局变量作用全局对象（浏览器环境中的window对象）的属性，这意味着用var很可能会无意中覆盖一个已经存在的全局变量<br>但是let或const会在全局作用域下创建一个新的绑定，但该绑定不会添加为全局对象的属性，换句话说用let或const不能覆盖全局变量，而只能遮蔽它<br>这个时候的RegExp和window.RegExp是不相同的<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="built_in">Math</span> = <span class="number">1</span>; <span class="comment">//window.Math === Math  false</span></span><br><span class="line"><span class="comment">/*带来的问题:</span></span><br><span class="line"><span class="comment">当你使用iframe去调用对象的时候.由于let 声明的变量不在window上面,</span></span><br><span class="line"><span class="comment">无法通过iframe调用,所以这种情况需要使用var来声明变量 */</span></span><br></pre></td></tr></table></figure></p>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://rickiewoo.github.io/2018/08/06/%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/sasuke.jpeg">
+      <meta itemprop="name" content="Rickie Woo">
+      <meta itemprop="description" content="We were both young when I first saw you.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rickie Woo's Wonder Land">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/08/06/%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" class="post-title-link" itemprop="url">基本数据类型</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2018-08-06 18:03:18" itemprop="dateCreated datePublished" datetime="2018-08-06T18:03:18+08:00">2018-08-06</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-06-08 18:36:23" itemprop="dateModified" datetime="2020-06-08T18:36:23+08:00">2020-06-08</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/keep-learning/" itemprop="url" rel="index"><span itemprop="name">keep-learning</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="String类型（基本数据类型）"><a href="#String类型（基本数据类型）" class="headerlink" title="String类型（基本数据类型）"></a>String类型（基本数据类型）</h3><h4 id="转换为字符串"><a href="#转换为字符串" class="headerlink" title="转换为字符串"></a>转换为字符串</h4><ul>
+<li><code>toString(baseNumber)</code>方法<ul>
+<li>数值、字符串、对象、布尔值都有这个方法，参数为输出数值的基数（<code>nul</code>l和<code>undefined</code>没有该方法）</li>
+</ul>
+</li>
+<li><code>String()</code>方法<ul>
+<li>不知道操作数是不是<code>null</code>或<code>undefined</code>时，可以用转型函数<code>String()</code>方法，将<code>null</code>和<code>undefined</code>转换为字符串<code>‘null’</code>和<code>‘undefined’</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="Array类型（引用类型）是Object对象"><a href="#Array类型（引用类型）是Object对象" class="headerlink" title="Array类型（引用类型）是Object对象"></a>Array类型（引用类型）是Object对象</h3><h4 id="length属性：-不是只读的，可以用来删除数组的最后几个元素，给它赋值回返回现在的长度（即赋的值）"><a href="#length属性：-不是只读的，可以用来删除数组的最后几个元素，给它赋值回返回现在的长度（即赋的值）" class="headerlink" title="length属性： 不是只读的，可以用来删除数组的最后几个元素，给它赋值回返回现在的长度（即赋的值）"></a>length属性： 不是只读的，可以用来删除数组的最后几个元素，给它赋值回返回现在的长度（即赋的值）</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line">arr.length = <span class="number">2</span>; <span class="comment">// 返回2</span></span><br><span class="line"><span class="comment">// arr = [1, 2];</span></span><br><span class="line">arr.length = <span class="number">3</span>; <span class="comment">// 返回3</span></span><br><span class="line"><span class="comment">// arr = [1, 2, undefined]</span></span><br></pre></td></tr></table></figure>
+<h4 id="转换方法"><a href="#转换方法" class="headerlink" title="转换方法"></a>转换方法</h4><ul>
+<li><p>toString()</p>
+</li>
+<li><p>valueOf()</p>
+</li>
+<li><p>toLocalString() (对每一个元素执行toLocalString()方法)</p>
+</li>
+<li><p>join()   // join(‘,’) = toStirng()</p>
+<p><strong>以上方法若有undefined或者null项则在返回结果中用空字符串表示）</strong></p>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="string">"a"</span>, <span class="string">"b"</span>, <span class="string">"c"</span>];</span><br><span class="line">arr.toString() <span class="comment">// 'a,b,c'</span></span><br><span class="line">arr.valueOf() <span class="comment">// 'a,b,c'</span></span><br></pre></td></tr></table></figure>
+<h4 id="其他方法"><a href="#其他方法" class="headerlink" title="其他方法"></a>其他方法</h4><ul>
+<li>栈方法<ul>
+<li>pop()</li>
+<li>push()</li>
+</ul>
+</li>
+<li>队列方法<ul>
+<li>shift()</li>
+<li>unshift()</li>
+</ul>
+</li>
+<li>重排方法<ul>
+<li>sort() a在b前返回负数，不变返回0，a在b后返回正数</li>
+<li>reverse() 反转数组</li>
+</ul>
+</li>
+<li>操作方法<ul>
+<li>concat</li>
+<li>slice</li>
+<li>splice(起始位置， 要删除的项数， 要插入的项1， 要插入的项2….)</li>
+</ul>
+</li>
+</ul>
+<h3 id="Object类型（引用类型）"><a href="#Object类型（引用类型）" class="headerlink" title="Object类型（引用类型）"></a>Object类型（引用类型）</h3><ul>
+<li>所有对象都有 <code>toLocalString(), toString(), valueOf()</code>    方法，引用对象会重写以上方法</li>
+</ul>
+<h3 id="Function-类型"><a href="#Function-类型" class="headerlink" title="Function 类型"></a>Function 类型</h3><ul>
+<li><p>没有重载， 将函数名想象为指针</p>
+</li>
+<li><p>函数声明和函数表达式</p>
+<ul>
+<li>解析器在代码开始之前会读取<strong>函数声明</strong>，并使其在执行任何代码前可用（被访问）【function sum(){}】</li>
+<li><strong>函数表达式</strong>必须等到解析器执行到他所在的代码行才会被真正的解释执行 【let sum = function(){}】</li>
+</ul>
+</li>
+<li><p>函数内部属性</p>
+<ul>
+<li><p>arguments（类数组）</p>
+<ul>
+<li>主要用途：保存函数参数</li>
+<li>callee属性，是个指针，指向拥有arguments对象的函数</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">factorial</span>(<span class="params">num</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (num &lt;= <span class="number">1</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">//return num * factorial(num-1)//与factorial这个函数名强耦合</span></span><br><span class="line">        <span class="keyword">return</span> num * <span class="built_in">arguments</span>.callee(num<span class="number">-1</span>) <span class="comment">//better</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>this</p>
+<ul>
+<li>函数在执行时所处的作用域</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>函数属性和方法</p>
+<ul>
+<li>length</li>
+<li>prototype</li>
+</ul>
+</li>
+</ul>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://rickiewoo.github.io/2018/07/06/call-apply-bind%E7%9A%84%E4%BD%9C%E7%94%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/sasuke.jpeg">
+      <meta itemprop="name" content="Rickie Woo">
+      <meta itemprop="description" content="We were both young when I first saw you.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rickie Woo's Wonder Land">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/07/06/call-apply-bind%E7%9A%84%E4%BD%9C%E7%94%A8/" class="post-title-link" itemprop="url">call,apply,bind的作用</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2018-07-06 18:03:18" itemprop="dateCreated datePublished" datetime="2018-07-06T18:03:18+08:00">2018-07-06</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-06-08 18:33:43" itemprop="dateModified" datetime="2020-06-08T18:33:43+08:00">2020-06-08</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/keep-learning/" itemprop="url" rel="index"><span itemprop="name">keep-learning</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.x = <span class="number">9</span>;    <span class="comment">// this refers to global "window" object here in the browser</span></span><br><span class="line"><span class="keyword">var</span> <span class="built_in">module</span> = &#123;</span><br><span class="line">  x: <span class="number">81</span>,</span><br><span class="line">  getX: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="keyword">return</span> <span class="keyword">this</span>.x; &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.getX(); <span class="comment">// 81</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> retrieveX = <span class="built_in">module</span>.getX;</span><br><span class="line">retrieveX();</span><br><span class="line"><span class="comment">// returns 9 - The function gets invoked at the global scope</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Create a new function with 'this' bound to module</span></span><br><span class="line"><span class="comment">// New programmers might confuse the</span></span><br><span class="line"><span class="comment">// global var x with module's property x</span></span><br><span class="line"><span class="keyword">var</span> boundGetX = retrieveX.bind(<span class="built_in">module</span>);</span><br><span class="line">boundGetX(); <span class="comment">// 81</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> person = &#123;</span><br><span class="line">    name: <span class="string">'文德嗣'</span>,</span><br><span class="line">    sayName: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.name)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> person1 = &#123;</span><br><span class="line">    name: <span class="string">'马千瞩'</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//如果我们想让文德嗣叫一下马路对面的马千瞩，咋办呢？</span></span><br><span class="line"><span class="comment">//只要call他一下就可以啦</span></span><br><span class="line">person.sayName.call(person1)</span><br><span class="line"><span class="comment">//同样的，使用apply和bind也可以达到相同的效果：</span></span><br><span class="line">person.sayName.apply(person1)</span><br><span class="line"><span class="comment">//下边会说，为什么bind后边多了个()</span></span><br><span class="line">person.sayName.bind(person1)()</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> func = <span class="function"><span class="keyword">function</span>(<span class="params">arg1, arg2</span>) </span>&#123;</span><br><span class="line">     <span class="comment">//do something</span></span><br><span class="line">&#125;</span><br><span class="line">func.call(<span class="keyword">this</span>, arg1, arg2);</span><br><span class="line">func.apply(<span class="keyword">this</span>, [arg1, arg2])</span><br></pre></td></tr></table></figure>
+<p>其中this是你想要指定的上下文环境，就是一开始那个例子中的person。后边有多个参数的时候，call需要按顺序传递参数，而apply只要传递一个参数数组就可以了。<br>js中参数数量是不定的，所以当参数数量已知固定时，用call，否则用apply，传入数组的长度就随意了。</p>
+<p>bind() 方法与 apply 和 call 很相似，其区别在于，call和apply会直接执行方法，文德嗣会当场叫马千瞩。而bind则是生成了一个新方法，不会自动执行。所以在一开始的例子中才会再后边多加一个括号，让他执行。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://rickiewoo.github.io/2018/06/01/%E5%85%B3%E4%BA%8Evue%E4%B8%AD%E5%9C%A8input%E6%A1%86%E5%8A%A8%E6%80%81%E6%9B%B4%E6%96%B0%E6%95%B0%E6%8D%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/sasuke.jpeg">
+      <meta itemprop="name" content="Rickie Woo">
+      <meta itemprop="description" content="We were both young when I first saw you.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rickie Woo's Wonder Land">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/06/01/%E5%85%B3%E4%BA%8Evue%E4%B8%AD%E5%9C%A8input%E6%A1%86%E5%8A%A8%E6%80%81%E6%9B%B4%E6%96%B0%E6%95%B0%E6%8D%AE/" class="post-title-link" itemprop="url">关于vue中在input框动态更新数据</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2018-06-01 18:12:57" itemprop="dateCreated datePublished" datetime="2018-06-01T18:12:57+08:00">2018-06-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-06-08 18:36:05" itemprop="dateModified" datetime="2020-06-08T18:36:05+08:00">2020-06-08</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Trick/" itemprop="url" rel="index"><span itemprop="name">Trick</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">el-input</span> <span class="attr">v-model</span>=<span class="string">"scope.row[column.prop]"</span> </span></span><br><span class="line"><span class="tag">@<span class="attr">focus</span>=<span class="string">"tableChange.priority=scope.row[column.prop]"</span> </span></span><br><span class="line"><span class="tag"><span class="attr">onkeyup</span>=<span class="string">"value=value.replace(/[^\d&#123;1,&#125;\.\d&#123;1,&#125;|\d&#123;1,&#125;]/g,'')"</span> </span></span><br><span class="line"><span class="tag">@<span class="attr">blur</span>=<span class="string">"updateProduct(scope.row)"</span>&gt;</span><span class="tag">&lt;/<span class="name">el-input</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>添加一个focus事件，copy一个值 （深拷贝）</p>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://rickiewoo.github.io/2018/06/01/%E6%95%B0%E7%BB%84%E6%8F%92%E5%85%A5-%E3%80%81%E6%8E%92%E5%BA%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/sasuke.jpeg">
+      <meta itemprop="name" content="Rickie Woo">
+      <meta itemprop="description" content="We were both young when I first saw you.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rickie Woo's Wonder Land">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/06/01/%E6%95%B0%E7%BB%84%E6%8F%92%E5%85%A5-%E3%80%81%E6%8E%92%E5%BA%8F/" class="post-title-link" itemprop="url">数组插入 、排序</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2018-06-01 18:11:42" itemprop="dateCreated datePublished" datetime="2018-06-01T18:11:42+08:00">2018-06-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-06-08 18:39:23" itemprop="dateModified" datetime="2020-06-08T18:39:23+08:00">2020-06-08</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Trick/" itemprop="url" rel="index"><span itemprop="name">Trick</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Array</span>.prototype.insert = <span class="function"><span class="keyword">function</span> (<span class="params"> index, item </span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.splice( index, <span class="number">0</span>, item );</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> arr = [ <span class="string">'A'</span>, <span class="string">'B'</span>, <span class="string">'D'</span>, <span class="string">'E'</span> ];</span><br><span class="line">arr.insert(<span class="number">2</span>, <span class="string">'C'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// =&gt; arr == [ 'A', 'B', 'C', 'D', 'E' ]</span></span><br></pre></td></tr></table></figure>
+<h3 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h3><p>sort方法的底层实现</p>
+<ol>
+<li> V8 引擎 sort 函数只给出了两种排序 InsertionSort 和 QuickSort，数量小于10的数组使用 InsertionSort，比10大的数组则使用 QuickSort。</li>
+</ol>
+<p>2.<br>    20多种。。。稍微有点常识不会这么说的，排序一共都没有20多种。</p>
+<pre><code>[array源码](https://github.com/v8/v8/blob/ad82a40509c5b5b4680d4299c8f08d6c6d31af3c/src/js/array.js)
+
+<p>710行开始。<br></code></pre><p><strong>研究一波源码如何 少年</strong></p></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://rickiewoo.github.io/2018/05/30/queue-%E4%B8%8E-promise-promise%E9%98%9F%E5%88%97%E5%B9%B6%E5%8F%91%E9%97%AE%E9%A2%98/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -590,392 +1068,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://rickiewoo.github.io/2018/05/13/%E5%85%AB%E5%88%86%E9%9F%B3%E7%AC%A6%E9%85%B1%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E9%80%BB%E8%BE%91/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/sasuke.jpeg">
-      <meta itemprop="name" content="Rickie Woo">
-      <meta itemprop="description" content="We were both young when I first saw you.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Rickie Woo's Wonder Land">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/05/13/%E5%85%AB%E5%88%86%E9%9F%B3%E7%AC%A6%E9%85%B1%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E9%80%BB%E8%BE%91/" class="post-title-link" itemprop="url">八分音符酱游戏设计与逻辑</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2018-05-13 18:23:11" itemprop="dateCreated datePublished" datetime="2018-05-13T18:23:11+08:00">2018-05-13</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-06-08 18:35:55" itemprop="dateModified" datetime="2020-06-08T18:35:55+08:00">2020-06-08</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Magic/" itemprop="url" rel="index"><span itemprop="name">Magic</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>游戏设计与逻辑</p>
-<p>首先开机后会进入一个开机画面，点击OK确认后，进入菜单选择，分别是键控和声控两个选项，根据选择显示键控（或声控）被选择的画面，确定选择之后点击OK即可正式开始游戏。</p>
-<p>游戏的状态控制：初始化的时候记录菜单选择，游戏进行过程中根据玩家的选择控制中断中的行为，每一帧进行人物位置判断的时候，会结合地图位置来进行游戏状态判断，当人物达到死亡条件时，游戏不再进行，蜂鸣器报警并显示分数画面，玩家可选择重新开始。</p>
-<p>游戏的计分系统：记录玩家存活时间作为游戏的分数，在本逻辑中每过一帧计一分。</p>
-<p>游戏的初始地图是一个固定高度，宽度有限制随机的矩形数组集合，人物的位置也是随机（算法确保人物初始落在地面上，且距离“悬崖”较远），然后通过玩家在键控模式的按键中断，或者声控模式达到一定阈值的中断，结合人物的位置，来判断是否进行跳跃。其中，人物移动的每一帧都会结合地图及是否有中断信息来判断人物的位置、游戏的状态、同时使地图向前刷新。简化后的游戏状态模型可以参见游戏状态图。</p>
-
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://rickiewoo.github.io/2018/05/13/ES6-%E5%AD%A6%E4%B9%A0%E4%B9%8B-async-await-by-wjj/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/sasuke.jpeg">
-      <meta itemprop="name" content="Rickie Woo">
-      <meta itemprop="description" content="We were both young when I first saw you.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Rickie Woo's Wonder Land">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/05/13/ES6-%E5%AD%A6%E4%B9%A0%E4%B9%8B-async-await-by-wjj/" class="post-title-link" itemprop="url">ES6 学习之 async await -by wjj</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2018-05-13 18:22:03" itemprop="dateCreated datePublished" datetime="2018-05-13T18:22:03+08:00">2018-05-13</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-06-08 18:34:11" itemprop="dateModified" datetime="2020-06-08T18:34:11+08:00">2020-06-08</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/ES6/" itemprop="url" rel="index"><span itemprop="name">ES6</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-           <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">timeout</span>(<span class="params">ms</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve</span>) =&gt;</span> &#123;</span><br><span class="line">        setTimeout(resolve, ms);</span><br><span class="line">        <span class="keyword">throw</span> <span class="built_in">Error</span>();</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">func1</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">await</span> timeout(<span class="number">1000</span>).catch(<span class="function"><span class="params">error</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'catch1'</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'during1'</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">func2</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">await</span> timeout(<span class="number">1000</span>);</span><br><span class="line">    <span class="keyword">throw</span> <span class="built_in">Error</span>();</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'during2'</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">(<span class="keyword">async</span> () =&gt; &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'start1'</span>);</span><br><span class="line">    <span class="keyword">await</span> func1()</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'end1'</span>);</span><br><span class="line">&#125;)();</span><br><span class="line"></span><br><span class="line">(<span class="keyword">async</span> () =&gt; &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'start2'</span>);</span><br><span class="line">    func2().catch(<span class="function"><span class="params">error</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'error2'</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'end2'</span>);</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://rickiewoo.github.io/2018/05/13/Elastic-Search-%E5%AD%A6%E4%B9%A0%E6%97%B6%E7%9C%8B%E5%88%B0%E7%9A%84story/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/sasuke.jpeg">
-      <meta itemprop="name" content="Rickie Woo">
-      <meta itemprop="description" content="We were both young when I first saw you.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Rickie Woo's Wonder Land">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/05/13/Elastic-Search-%E5%AD%A6%E4%B9%A0%E6%97%B6%E7%9C%8B%E5%88%B0%E7%9A%84story/" class="post-title-link" itemprop="url">Elastic Search 学习时看到的story</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2018-05-13 18:21:16" itemprop="dateCreated datePublished" datetime="2018-05-13T18:21:16+08:00">2018-05-13</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-06-08 18:33:56" itemprop="dateModified" datetime="2020-06-08T18:33:56+08:00">2020-06-08</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Magic/" itemprop="url" rel="index"><span itemprop="name">Magic</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>许多年前，一个刚结婚的名叫 Shay Banon 的失业开发者，跟着他的妻子去了伦敦，他的妻子在那里学习厨师。 在寻找一个赚钱的工作的时候，为了给他的妻子做一个食谱搜索引擎，他开始使用 Lucene 的一个早期版本。</p>
-<p>直接使用 Lucene 是很难的，因此 Shay 开始做一个抽象层，Java 开发者使用它可以很简单的给他们的程序添加搜索功能。 他发布了他的第一个开源项目 Compass。</p>
-<p>后来 Shay 获得了一份工作，主要是高性能，分布式环境下的内存数据网格。这个对于高性能，实时，分布式搜索引擎的需求尤为突出， 他决定重写 Compass，把它变为一个独立的服务并取名 Elasticsearch。</p>
-<p>第一个公开版本在2010年2月发布，从此以后，Elasticsearch 已经成为了 Github 上最活跃的项目之一，他拥有超过300名 contributors(目前736名 contributors )。 一家公司已经开始围绕 Elasticsearch 提供商业服务，并开发新的特性，但是，Elasticsearch 将永远开源并对所有人可用。</p>
-<p>据说，Shay 的妻子还在等着她的食谱搜索引擎…</p>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://rickiewoo.github.io/2018/05/04/ES6-%E5%AD%A6%E4%B9%A0%E4%B9%8B-replace%E7%A9%BA%E7%99%BD%E5%AD%97%E7%AC%A6%E7%9A%84%E9%97%AE%E9%A2%98/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/sasuke.jpeg">
-      <meta itemprop="name" content="Rickie Woo">
-      <meta itemprop="description" content="We were both young when I first saw you.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Rickie Woo's Wonder Land">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/05/04/ES6-%E5%AD%A6%E4%B9%A0%E4%B9%8B-replace%E7%A9%BA%E7%99%BD%E5%AD%97%E7%AC%A6%E7%9A%84%E9%97%AE%E9%A2%98/" class="post-title-link" itemprop="url">ES6 学习之 replace空白字符的问题</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2018-05-04 18:24:14" itemprop="dateCreated datePublished" datetime="2018-05-04T18:24:14+08:00">2018-05-04</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-06-08 18:34:16" itemprop="dateModified" datetime="2020-06-08T18:34:16+08:00">2020-06-08</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/ES6/" itemprop="url" rel="index"><span itemprop="name">ES6</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">"1 2 3 4"</span></span><br><span class="line"><span class="comment">//undefined</span></span><br><span class="line">str.replace(<span class="string">" "</span>, <span class="string">""</span>)</span><br><span class="line"><span class="comment">//"12 3 4"</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Trim</span>(<span class="params">str,is_global</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">let</span> result;</span><br><span class="line">    result = str.replace(<span class="regexp">/(^\s+)|(\s+$)/g</span>,<span class="string">""</span>);</span><br><span class="line">    <span class="keyword">if</span>(is_global.toLowerCase()==<span class="string">"g"</span>)</span><br><span class="line">    &#123;</span><br><span class="line">    result = result.replace(<span class="regexp">/\s/g</span>,<span class="string">""</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//全局需要g匹配，否则只替换第一个emmmm</span></span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://rickiewoo.github.io/2018/05/03/%E5%87%BD%E6%95%B0%E4%BC%A0%E5%8F%82%E5%88%B0%E5%BA%95%E6%98%AF%E5%80%BC%E4%BC%A0%E9%80%92/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/sasuke.jpeg">
-      <meta itemprop="name" content="Rickie Woo">
-      <meta itemprop="description" content="We were both young when I first saw you.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Rickie Woo's Wonder Land">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/05/03/%E5%87%BD%E6%95%B0%E4%BC%A0%E5%8F%82%E5%88%B0%E5%BA%95%E6%98%AF%E5%80%BC%E4%BC%A0%E9%80%92/" class="post-title-link" itemprop="url">函数传参到底是值传递</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2018-05-03 18:24:57" itemprop="dateCreated datePublished" datetime="2018-05-03T18:24:57+08:00">2018-05-03</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-06-08 18:36:17" itemprop="dateModified" datetime="2020-06-08T18:36:17+08:00">2020-06-08</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/keep-learning/" itemprop="url" rel="index"><span itemprop="name">keep-learning</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>结论：</p>
-<p>红宝书上说都是值传递</p>
-<p>传递对象的时候也是值传递，本来传递的东西就是该对象的引用，所以全是值传递！</p>
-<p>内部机制：</p>
-<p>其实函数接受参数之前，会先在函数作用域内创建一个局部变量，并把传入的参数赋予创建的局部变量，如果值类型传递，就是重新开辟一块内存存储传入变量的值，并把新创建的变量指向此内存地址，因此对此变量的修改并不会影响到外部变量的值；</p>
-<p>如果传入的不是值类型，则仅仅是对变量进行引用赋值操作，只是把新创建的局部变量指向外部变量的地址，因此对局部变量的修改就相当于对外部变量的修改。</p>
-
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1047,7 +1139,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">25</span>
+          <span class="site-state-item-count">30</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -1101,7 +1193,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2020</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
